@@ -11,12 +11,6 @@ import NetlifyCMS from 'astro-netlify-cms';
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    partytown({
-      // Adds dataLayer.push as a forwarding-event.
-      config: {
-        forward: ["dataLayer.push"],
-      },
-    }),
     tailwind(),
     NetlifyCMS({
       config: {
