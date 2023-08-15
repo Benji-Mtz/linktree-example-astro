@@ -1,0 +1,49 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+import Avatar from "@components/Avatar.astro";
+import FeaturedCardsLayout from "@layouts/FeaturedCardsLayout.astro";
+import FeaturedCard from "@components/FeaturedCard.astro";
+import LinksLayout from "@layouts/LinksLayout.astro";
+import Link from "@components/Link.astro";
+import Social from "@components/Social.astro";
+const links = await Astro.glob("./links/*.md");
+---
+
+<MainLayout title="Astro LinkTree Clone">
+  <Avatar />
+  <Social />
+  <!-- <FeaturedCardsLayout>
+    <FeaturedCard
+      featuredCardIcon="mdi:twitter"
+      featuredCardTitle="Support Us!"
+      featuredCardLink="http://twitter.com/astrodotbuild"
+    />
+    <FeaturedCard
+      featuredCardIcon="ri:twitter-line"
+      featuredCardTitle="Join Community!"
+      featuredCardLink="https://www.discord.com"
+    />
+    <FeaturedCard
+      featuredCardIcon="uil:github"
+      featuredCardTitle="Visit Github!"
+      featuredCardLink="https://www.github.com"
+    /> -->
+</MainLayout>
+<LinksLayout>
+  <h1
+    class="text-center text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-6xl dark:text-white"
+  >
+    Links profesionales.
+  </h1>
+  {
+    links.map((link) => {
+      return (
+        <Link
+          linkTitle={link.frontmatter.linkTitle}
+          linkDescription={link.frontmatter.linkDescription}
+          linkURL={link.frontmatter.linkURL}
+        />
+      );
+    })
+  }
+</LinksLayout>
